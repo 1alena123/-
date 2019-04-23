@@ -7,19 +7,12 @@ public class Game {
     private static ArrayList<String> towns = new ArrayList<>();
 
 
-    public static void main(String[] args) throws IOException {
-        try {
-            final BufferedReader in = new BufferedReader(new FileReader("src\\города.txt"));
-            for (String city; (city = in.readLine()) != null; ) {
-                towns.add(city);
-            }
-            in.close();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+    public  void algortm() {
 
+        ReadingFrom obj=new ReadingFrom();
+        File file = new File("src\\города.txt");
+        obj.read(file,towns);
 
-        //////////////////////////////////////////////////////////////////////
 
         char lastChar;
         char firstChar;
@@ -27,12 +20,11 @@ public class Game {
 
         System.out.println("Игра началась!");
 
-        String A = (towns.get(idx));
-        String B;
-        System.out.println("1 игрок - " + A);
-        lastChar = getLastChar(A);
+        String B = (towns.get(idx));
+        System.out.println("1 игрок - " + B);
+        lastChar = getLastChar(B);
         System.out.println("Последняя буква " + lastChar);
-        towns.remove(A);
+        towns.remove(B);
         while(true) {
 
             for (int i = 0; i < towns.size(); i++) {
@@ -48,10 +40,8 @@ public class Game {
 
             System.out.println("Последняя буква " + lastChar);
             if(!isConsistWordWithFirstChar(lastChar)){
-                System.out.println("Игра окончена выиграл игрок 1"); break;
+                System.out.println("Игра окончена выиграл игрок 2"); break;
             }
-
-
 
             for (int i = 0; i < towns.size(); i++) {
                 B = towns.get(i);
@@ -66,12 +56,11 @@ public class Game {
             }
             System.out.println("Последняя буква " + lastChar);
             if(!isConsistWordWithFirstChar(lastChar)){
-                System.out.println("Игра окончена выиграл игрок 2"); break;
+                System.out.println("Игра окончена выиграл игрок 1"); break;
             }
 
         }
     }
-
 
     public static Character getFirstChar(String city) {
         return city.charAt(0);
