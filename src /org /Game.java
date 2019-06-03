@@ -12,7 +12,7 @@ public class Game
     public  void algortm() {
 
         ReadingFrom obj=new ReadingFrom();
-        File file = new File("src\\города.txt");
+        File file = new File("doc\\города.txt");
         obj.read(file,towns);
         Collections.shuffle(towns);
         char lastChar;
